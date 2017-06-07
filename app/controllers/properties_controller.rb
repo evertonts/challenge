@@ -7,6 +7,10 @@ class PropertiesController < ApplicationController
     render :show, status: :created
   end
 
+  def show
+    @property = Property.find(params[:id])
+  end
+
   private
 
   def property_params
