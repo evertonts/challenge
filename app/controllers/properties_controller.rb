@@ -2,9 +2,11 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
 
-    @property.save
-
-    render :show, status: :created
+    if @property.save
+      render :show, status: :created
+    else
+      render 'commons/errors', status: :unprocessable_entity, locals: { errors: @property.errors }
+    end
   end
 
   def show
