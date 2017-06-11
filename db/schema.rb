@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611185619) do
+ActiveRecord::Schema.define(version: 20170612213148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20170611185619) do
     t.decimal "price", precision: 14, scale: 2
     t.string "description"
     t.string "title"
+    t.index ["x"], name: "index_properties_on_x"
+    t.index ["y"], name: "index_properties_on_y"
+  end
+
+  create_table "properties_provinces", id: false, force: :cascade do |t|
+    t.integer "property_id"
+    t.integer "province_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -32,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170611185619) do
     t.integer "upper_left_y"
     t.integer "bottom_right_x"
     t.integer "bottom_right_y"
+    t.index ["upper_left_x", "bottom_right_x"], name: "index_provinces_on_upper_left_x_and_bottom_right_x"
+    t.index ["upper_left_y", "bottom_right_y"], name: "index_provinces_on_upper_left_y_and_bottom_right_y"
   end
 
 end

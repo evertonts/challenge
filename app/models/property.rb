@@ -1,4 +1,7 @@
 class Property < ApplicationRecord
+  has_and_belongs_to_many :provinces
+  after_create :associate_provinces
+
   MAX_BEDS = 5
   MAX_BATHS = 4
   MAX_SQUARE_METERS = 240
@@ -25,7 +28,9 @@ class Property < ApplicationRecord
 
   scope :in_area, -> (ax, bx, ay, by) { where(x: ax..bx, y: ay..by) }
 
-  def provinces
-    Province.include_point(x, y)
+  def associate_provinces
+    self.provinces = Province.include_point(x, y)
+
+    self.save
   end
 end

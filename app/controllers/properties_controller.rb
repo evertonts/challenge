@@ -14,7 +14,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.in_area(params[:ax], params[:bx], params[:ay], params[:by])
+    @properties = Property.includes(:provinces).in_area(params[:ax], params[:bx], params[:ay], params[:by])
   end
 
   private

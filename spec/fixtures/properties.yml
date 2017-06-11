@@ -1,10 +1,13 @@
-property:
-  x: 22
-  y: 44
+property: &default
+  x: 1000
+  y: 1000
   title: 'Test property'
   description: 'Test property'
   price: 100000
   beds: 3
   baths: 4
   square_meters: 210
+  provinces: [province]
 
+property2:
+  <<: *default

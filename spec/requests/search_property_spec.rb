@@ -4,13 +4,6 @@ RSpec.describe 'Searching a property' do
   it 'returns all properties in the area' do
     property = properties(:property)
     property.update(x: 5, y: 5)
-    province = provinces(:province)
-    province.update(
-      upper_left_x: 0,
-      upper_left_y: 0,
-      bottom_right_x: 10,
-      bottom_right_y: 10
-    )
 
     params = { ax: 0, ay: 0, bx: 10, by: 10 }
 
@@ -28,7 +21,7 @@ RSpec.describe 'Searching a property' do
       beds: property.beds,
       baths: property.baths,
       squareMeters: property.squareMeters,
-      provinces: [province.name]
+      provinces: property.provinces.map(&:name)
     }]
   end
 
