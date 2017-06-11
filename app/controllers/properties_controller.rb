@@ -11,6 +11,10 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
+  def index
+    @properties = Property.in_area(params[:ax], params[:bx], params[:ay], params[:by])
+  end
+
   private
 
   def property_params
