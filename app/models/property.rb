@@ -26,6 +26,6 @@ class Property < ApplicationRecord
   scope :in_area, -> (ax, bx, ay, by) { where(x: ax..bx, y: ay..by) }
 
   def provinces
-    []
+    Province.include_point(x, y)
   end
 end

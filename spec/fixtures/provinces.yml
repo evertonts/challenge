@@ -1,0 +1,7 @@
+province:
+  name: 'Test'
+  upper_left_x: 1000
+  upper_left_y: 1000
+  bottom_right_x: 1000
+  bottom_right_y: 1000
+
