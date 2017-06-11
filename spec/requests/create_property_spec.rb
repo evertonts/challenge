@@ -15,8 +15,6 @@ RSpec.describe 'Creating a new property' do
 
     post '/properties', params: params
 
-    json = JSON.parse(response.body, symbolize_names: true)
-
     expect(response).to have_http_status(:created)
     expect(json).to eq ({
       id: Property.last.id,

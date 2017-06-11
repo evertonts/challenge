@@ -6,8 +6,6 @@ RSpec.describe 'Showing a property' do
 
     get "/properties/#{property.id}"
 
-    json = JSON.parse(response.body, symbolize_names: true)
-
     expect(response).to have_http_status(:ok)
     expect(json).to eq ({
       id: property.id,
