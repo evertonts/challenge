@@ -1,12 +1,1 @@
-json.call(
-  @property,
-  :id,
-  :x,
-  :y,
-  :title,
-  :description,
-  :price,
-  :beds,
-  :baths,
-  :squareMeters
-)
+json.partial!('/commons/property', property: @property)
